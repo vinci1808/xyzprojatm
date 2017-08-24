@@ -1,0 +1,26 @@
+SEQUENTIAL BROWSING OF RECORDS IN VSAM KSDS FILE
+
+Set value of &KEY to LOW-VALUES before executing the below command. This will
+position the pointer before the first record
+
+CECI STARTBR FILE(PnnAFILE) RIDLFD(&KEY)
+
+To start reading from the first record execute the following command
+
+CECI READNEXT FILE(PnnAFILE) RIDLFD(&KEY) INTO(&REC)
+
+Multiple READNEXT will go thru the file sequentially
+
+If you want to change the direction of Read, i.e. Read the previous one
+you need to issued the READPREV command twice.
+
+CECI READPREV FILE(PnnAFILE) RIDLFD(&KEY) INTO(&REC)
+
+If you want to change the Browse location, change Key value & issue
+
+CECI RESETBR FILE(PnnAFILE) RIDLFD(&KEY)
+
+Once your Browsing operation is over, issue the Command
+
+CECI ENDBR FILE(PnnAFILE)
++++++++++++++++++++++++++
